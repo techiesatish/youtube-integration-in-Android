@@ -8,10 +8,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
-/**
- * Created by Ansh on 29/10/2017 1:14 AM.
- */
-
 public class AppController extends Application {
     public static final String TAG = AppController.class.getSimpleName();
     private static AppController mInstance;

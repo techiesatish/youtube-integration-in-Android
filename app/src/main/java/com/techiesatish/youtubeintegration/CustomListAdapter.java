@@ -10,15 +10,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-
 import java.util.ArrayList;
-
-/**
- * Created by Ansh on 29/10/2017 1:00 AM.
- */
 
 public class CustomListAdapter extends BaseAdapter {
     Activity activity;
@@ -72,18 +66,6 @@ public class CustomListAdapter extends BaseAdapter {
         });
 
 
-
-
-/*       imgdesc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment newFragment = new ListFragmentClass(tag);
-                if (newFragment != null)
-                    switchFragment(newFragment);
-            }
-        });
-
-*/
         VideoDetails singleton = (VideoDetails) this.singletons.get(i);
         networkImageView.setImageUrl(singleton.getURL(), this.imageLoader);
         tvVideoID.setText(singleton.getVideoId());

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
-
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -14,11 +13,9 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 public class ChannelActivity extends AppCompatActivity {
@@ -27,7 +24,9 @@ public class ChannelActivity extends AppCompatActivity {
     CustomListAdapter customListAdapter;
     String searchName;
     String TAG="ChannelActivity";
-    String URL="https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UC9CYT9gSNLevX5ey2_6CK0Q&maxResults=25&key=AIzaSyAoRYyYO2OwNU2MZhYHcltkbGoGoTqXR5g";
+    //UC1NF71EwP41VdjAU1iXdLkw
+   // UC9CYT9gSNLevX5ey2_6CK0Q
+    String URL="https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UC1NF71EwP41VdjAU1iXdLkw&maxResults=25&key={Your_API_KEY}";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +37,9 @@ public class ChannelActivity extends AppCompatActivity {
         customListAdapter=new CustomListAdapter(ChannelActivity.this,videoDetailsArrayList);
                 showVideo();
 
-
-
     }
 
     private void showVideo() {
-
-     //   String URL="https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q="+searchName+"&key=AIzaSyAoRYyYO2OwNU2MZhYHcltkbGoGoTqXR5g";
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         StringRequest stringRequest=new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
@@ -68,13 +63,9 @@ public class ChannelActivity extends AppCompatActivity {
                            videoDetails.setVideoId(videoid);
 
                         videoDetailsArrayList.add(videoDetails);
-
-//                         videoDetailsArrayList.clear();
                     }
                     lvVideo.setAdapter(customListAdapter);
-
                     customListAdapter.notifyDataSetChanged();
-                    // lvVideo.setAdapter(null);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

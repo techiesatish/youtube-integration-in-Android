@@ -16,7 +16,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 
 public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 YouTubePlayerView youTubePlayerView;
-String API_KEY="AIzaSyAoRYyYO2OwNU2MZhYHcltkbGoGoTqXR5g";
+String API_KEY="Your_API_KEY";
     private static final int RECOVERY_REQUEST = 1;
     String TAG="VideoActivity";
     @Override
@@ -30,24 +30,10 @@ String API_KEY="AIzaSyAoRYyYO2OwNU2MZhYHcltkbGoGoTqXR5g";
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
 
-       // Bundle bundle = getIntent().getExtras();
-       // Log.e(TAG, "Video Id " + bundle.getString("videoId") );
-      //  youTubePlayer.cueVideo(bundle.getString("videoId"));
-
         Bundle bundle = getIntent().getExtras();
-        String message = bundle.getString("videoId");
-        Log.e(TAG,"Video" +message);
-        youTubePlayer.cueVideo(message);
-       // youTubePlayer.loadVideo(bundle.getString("url"));
-
-       // youTubePlayer.play();
-
-     /*   if(!b){
-        Bundle bundle=getIntent().getExtras();
-        String id=bundle.getString("videoId");
-            Log.e(TAG,"running" +id);
-           youTubePlayer.cueVideo(id);
-        }*/
+        String showVideo = bundle.getString("videoId");
+        Log.e(TAG,"Video" +showVideo);
+        youTubePlayer.cueVideo(showVideo);
 
     }
 
@@ -64,7 +50,6 @@ String API_KEY="AIzaSyAoRYyYO2OwNU2MZhYHcltkbGoGoTqXR5g";
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == RECOVERY_REQUEST) {
-            // Retry initialization if user performed a recovery action
             getYouTubePlayerProvider().initialize(API_KEY, this);
         }
     }
